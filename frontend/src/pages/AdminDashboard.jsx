@@ -61,7 +61,7 @@ function AdminDashboard() {
         { headers: { Authorization: `Bearer ${token}` } }
       );
 
-      const client = response.data.client;
+      const client = response.data;
 
       alert(
         `Cliente cadastrado com sucesso!\n\nCredenciais de acesso:\nLogin: ${client.email}\nSenha: ${generatedPassword}`
