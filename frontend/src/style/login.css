@@ -1,0 +1,101 @@
+/* Container da página, ocupa a tela inteira, centra conteúdo */
+.login-container {
+min-height: 100vh;
+display: flex;
+align-items: center;
+justify-content: center;
+background-color: #f9fafb; /* cinza claro */
+padding: 0 16px;
+box-sizing: border-box;
+}
+
+/* Caixa branca com sombra, arredondada e padding */
+.login-box {
+max-width: 400px;
+width: 100%;
+background-color: #fff;
+border-radius: 12px;
+box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+padding: 32px;
+box-sizing: border-box;
+}
+
+/* Título centralizado, azul e grande */
+.login-title {
+font-size: 1.875rem; /* 30px */
+font-weight: 700;
+color: #2563eb; /* azul */
+margin-bottom: 24px;
+text-align: center;
+}
+
+/* ícone no título */
+.login-icon {
+    width: 28px;
+    height: 28px;
+    vertical-align: middle;
+    margin-right: 10px;
+    color: #2563eb; /* azul */
+    display: inline-block;
+  }
+  
+
+/* Formulário espaçado verticalmente */
+.login-form {
+display: flex;
+flex-direction: column;
+gap: 24px;
+}
+
+/* Grupo de label + input */
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Label com fonte mais forte e margem */
+.form-label {
+  font-weight: 600;
+  color: #374151; /* cinza escuro */
+  margin-bottom: 8px;
+  font-size: 1rem;
+}
+
+/* Input estilizado */
+.form-input {
+  padding: 10px 14px;
+  font-size: 1rem;
+  border: 1.5px solid #d1d5db; /* cinza claro */
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.2s ease;
+  font-family: inherit;
+}
+
+.form-input:focus {
+  border-color: #2563eb; /* azul */
+  box-shadow: 0 0 5px rgba(37, 99, 235, 0.5);
+}
+
+/* Botão grande azul com texto branco */
+.btn-submit {
+  background-color: #2563eb;
+  color: #fff;
+  padding: 14px 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
+}
+
+.btn-submit:hover:not(:disabled) {
+  background-color: #1e40af; /* azul mais escuro */
+}
+
+.btn-submit:disabled {
+  background-color: #93c5fd; /* azul claro */
+  cursor: not-allowed;
+}
