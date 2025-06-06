@@ -2,9 +2,9 @@ import { FaEnvelope, FaPhone, FaInstagram, FaFacebookF } from "react-icons/fa";
 
 export function ContactSection() {
   return (
-    <section
+    <section id="contact"
       style={{
-        backgroundColor: "#f9fafb",
+        backgroundColor: " #1d4ed8",
         padding: "4rem 1rem",
         display: "flex",
         justifyContent: "center",
@@ -13,7 +13,6 @@ export function ContactSection() {
       <div
         style={{
           backgroundColor: "#fff",
-          padding: "2.5rem 3rem",
           borderRadius: "12px",
           boxShadow:
             "0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05)",
@@ -133,3 +132,28 @@ export function ContactSection() {
     </section>
   );
 }
+
+/* 
+import React from "react";
+import { FaEnvelope, FaPhone } from "react-icons/fa";
+
+export function ContactSection() {
+  return (
+    <section className="contact" id="contact">
+      <h2 className="section-title">Entre em Contato</h2>
+      <p className="contact-text">
+        Estamos à disposição para esclarecer dúvidas e apresentar soluções
+        personalizadas para o seu negócio.
+      </p>
+      <div className="contact-info">
+        <p className="contact-item">
+          <FaPhone /> <strong>Telefone:</strong> <a href="tel:+5583988748533">(83) 98874-8533</a>
+        </p>
+        <p className="contact-item">
+          <FaEnvelope /> <strong>Email:</strong> <a href="mailto:danilocontabeis18@gmail.com">danilocontabeis18@gmail.com</a>
+        </p>
+      </div>
+    </section>
+  );
+} */
+
