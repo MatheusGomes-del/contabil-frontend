@@ -29,7 +29,7 @@ function LandingPage() {
             Simplifique a Burocracia e Tenha Sua Empresa Regularizada com Rapidez e Segurança
           </p>
           <a
-                  href="https://api.whatsapp.com/send?phone=55839988748533&text=Olá!%20Gostaria%20de%20mais%20informações."
+                  href="https://api.whatsapp.com/send?phone=+5583988748533&text=Olá!%20Gostaria%20de%20mais%20informações."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn btn-primary"
@@ -58,7 +58,7 @@ function LandingPage() {
             </ul>
             <p>Atuamos com agilidade, segurança jurídica e orientação personalizada para que você inicie sua atividade empresarial com tranquilidade e total conformidade legal.</p>
             <a
-                  href="https://api.whatsapp.com/send?phone=55839988748533&text=Olá!%20Gostaria%20de%20mais%20informações."
+                  href="https://api.whatsapp.com/send?phone=+5583988748533&text=Olá!%20Gostaria%20de%20mais%20informações."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn btn-primary"
@@ -87,7 +87,7 @@ function LandingPage() {
               </ul>
               <p>Garantimos segurança, compliance e eficiência fiscal para sua empresa, minimizando riscos e aproveitando oportunidades legais de economia tributária.</p>
               <a
-                  href="https://api.whatsapp.com/send?phone=55839988748533&text=Olá!%20Gostaria%20de%20mais%20informações."
+                  href="https://api.whatsapp.com/send?phone=+5583988748533&text=Olá!%20Gostaria%20de%20mais%20informações."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn btn-primary"
@@ -116,7 +116,7 @@ function LandingPage() {
                 </ul>
                 <p>Nosso foco é garantir segurança jurídica e eficiência fiscal, ajudando sua empresa a crescer de forma sustentável e com menor impacto tributário.</p>
                 <a
-                  href="https://api.whatsapp.com/send?phone=55839988748533&text=Olá!%20Gostaria%20de%20mais%20informações."
+                  href="https://api.whatsapp.com/send?phone=+5583988748533&text=Olá!%20Gostaria%20de%20mais%20informações."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn btn-primary"
@@ -145,7 +145,7 @@ function LandingPage() {
               </ul>
               <p>Oferecemos suporte técnico e estratégico para manter sua empresa regularizada e em dia com as normas trabalhistas, promovendo tranquilidade e eficiência na gestão de pessoas.</p>
               <a
-                  href="https://api.whatsapp.com/send?phone=5583988748533&text=Olá!%20Gostaria%20de%20mais%20informações."
+                  href="https://api.whatsapp.com/send?phone=+5583988748533&text=Olá!%20Gostaria%20de%20mais%20informações."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn btn-primary"
