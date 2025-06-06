@@ -168,7 +168,7 @@ function LandingPage() {
       </footer>
       <a
         href="https://api.whatsapp.com/send?phone=839988748533&text=Olá!%20Gostaria%20de%20mais%20informações."
-        className="whatsapp-float"
+        className="whatsapp-icon"
         target="_blank"
         rel="noopener noreferrer"
       >
