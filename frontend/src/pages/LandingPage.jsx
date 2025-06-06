@@ -145,7 +145,7 @@ function LandingPage() {
               </ul>
               <p>Oferecemos suporte técnico e estratégico para manter sua empresa regularizada e em dia com as normas trabalhistas, promovendo tranquilidade e eficiência na gestão de pessoas.</p>
               <a
-                  href="https://api.whatsapp.com/send?phone=55839988748533&text=Olá!%20Gostaria%20de%20mais%20informações."
+                  href="https://api.whatsapp.com/send?phone=5583988748533&text=Olá!%20Gostaria%20de%20mais%20informações."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn btn-primary"
