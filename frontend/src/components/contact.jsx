@@ -1,159 +1,47 @@
 import { FaEnvelope, FaPhone, FaInstagram, FaFacebookF } from "react-icons/fa";
+import "../style/contactSection.css";
 
 export function ContactSection() {
   return (
-    <section id="contact"
-      style={{
-        backgroundColor: " #1d4ed8",
-        padding: "4rem 1rem",
-        display: "flex",
-        justifyContent: "center",
-      }}
-    >
-      <div
-        style={{
-          backgroundColor: "#fff",
-          borderRadius: "12px",
-          boxShadow:
-            "0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05)",
-          width: "100%",
-          maxWidth: "600px",
-          margin: "0 auto",
-          textAlign: "center",
-          boxSizing: "border-box",
-        }}
-      >
-        <h2
-          style={{
-            fontWeight: "700",
-            fontSize: "1.75rem",
-            marginBottom: "1rem",
-            color: "#111827",
-          }}
-        >
-          Entre em Contato
-        </h2>
-        <p
-          style={{
-            fontSize: "1rem",
-            color: "#6b7280",
-            marginBottom: "2rem",
-          }}
-        >
-          Estamos à disposição para esclarecer dúvidas e apresentar soluções
-          personalizadas para o seu negócio.
-        </p>
+    <section id="contact" className="contact-section">
+      <h2 className="contact-title">Entre em Contato</h2>
+      <p className="contact-description">
+        Estamos à disposição para esclarecer dúvidas e apresentar soluções
+        personalizadas para o seu negócio.
+      </p>
 
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: "1.25rem",
-            fontSize: "1rem",
-            color: "#374151",
-            alignItems: "center",
-          }}
+      <div className="contact-details">
+        <a href="mailto:danilocontabeis18@gmail.com" className="contact-link">
+          <FaEnvelope size={20} />
+          danilocontabeis18@gmail.com
+        </a>
+
+        <a href="tel:+83988748533" className="contact-link">
+          <FaPhone size={20} />
+          (83) 98874-8533
+        </a>
+      </div>
+
+      <div className="contact-socials">
+        <a
+          href="https://www.instagram.com/contabfile"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Instagram"
+          className="social-icon instagram"
         >
-          <a
-            href="mailto:contato@contabfile.com.br"
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "0.75rem",
-              color: "#2563eb",
-              textDecoration: "none",
-              fontWeight: "500",
-            }}
-            onMouseEnter={(e) => (e.currentTarget.style.color = "#1d4ed8")}
-            onMouseLeave={(e) => (e.currentTarget.style.color = "#2563eb")}
-          >
-            <FaEnvelope size={20} />
-            contato@contabfile.com.br
-          </a>
-
-          <a
-            href="tel:+5511999998888"
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "0.75rem",
-              color: "#2563eb",
-              textDecoration: "none",
-              fontWeight: "500",
-            }}
-            onMouseEnter={(e) => (e.currentTarget.style.color = "#1d4ed8")}
-            onMouseLeave={(e) => (e.currentTarget.style.color = "#2563eb")}
-          >
-            <FaPhone size={20} />
-            (11) 99999-8888
-          </a>
-
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              gap: "1.5rem",
-              marginTop: "1rem",
-            }}
-          >
-            <a
-              href="https://www.instagram.com/contabfile"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Instagram"
-              style={{
-                color: "#6b7280",
-                fontSize: "1.25rem",
-                transition: "color 0.3s",
-              }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = "#ec4899")}
-              onMouseLeave={(e) => (e.currentTarget.style.color = "#6b7280")}
-            >
-              <FaInstagram />
-            </a>
-            <a
-              href="https://www.facebook.com/contabfile"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Facebook"
-              style={{
-                color: "#6b7280",
-                fontSize: "1.25rem",
-                transition: "color 0.3s",
-              }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = "#3b82f6")}
-              onMouseLeave={(e) => (e.currentTarget.style.color = "#6b7280")}
-            >
-              <FaFacebookF />
-            </a>
-          </div>
-        </div>
+          <FaInstagram />
+        </a>
+        <a
+          href="https://www.facebook.com/contabfile"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Facebook"
+          className="social-icon facebook"
+        >
+          <FaFacebookF />
+        </a>
       </div>
     </section>
   );
 }
-
-/* 
-import React from "react";
-import { FaEnvelope, FaPhone } from "react-icons/fa";
-
-export function ContactSection() {
-  return (
-    <section className="contact" id="contact">
-      <h2 className="section-title">Entre em Contato</h2>
-      <p className="contact-text">
-        Estamos à disposição para esclarecer dúvidas e apresentar soluções
-        personalizadas para o seu negócio.
-      </p>
-      <div className="contact-info">
-        <p className="contact-item">
-          <FaPhone /> <strong>Telefone:</strong> <a href="tel:+5583988748533">(83) 98874-8533</a>
-        </p>
-        <p className="contact-item">
-          <FaEnvelope /> <strong>Email:</strong> <a href="mailto:danilocontabeis18@gmail.com">danilocontabeis18@gmail.com</a>
-        </p>
-      </div>
-    </section>
-  );
-} */
-

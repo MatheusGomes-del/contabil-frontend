@@ -28,7 +28,14 @@ function LandingPage() {
             Já Ajudamos Mais de 1.500 Empreendedores a Começar Seus Negócios
             Simplifique a Burocracia e Tenha Sua Empresa Regularizada com Rapidez e Segurança
           </p>
-          <Link to="/login" className="btn btn-primary">ACESSORIA CONTÁBIL</Link>
+          <a
+                  href="https://api.whatsapp.com/send?phone=55839988748533&text=Olá!%20Gostaria%20de%20mais%20informações."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-primary"
+              >
+                ACESSORIA CONTÁBIL
+              </a>
         </section>
 
         <section id="services" className="services-open-business">
@@ -50,7 +57,14 @@ function LandingPage() {
               <li>Enquadramento no Simples Nacional (quando aplicável)</li>
             </ul>
             <p>Atuamos com agilidade, segurança jurídica e orientação personalizada para que você inicie sua atividade empresarial com tranquilidade e total conformidade legal.</p>
-            <Link to="/login" className="btn btn-primary">QUERO ABRIR MINHA EMPRESA</Link>
+            <a
+                  href="https://api.whatsapp.com/send?phone=55839988748533&text=Olá!%20Gostaria%20de%20mais%20informações."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-primary"
+              >
+                QUERO ABRIR MINHA EMPRESA
+              </a>
           </article>
           </section>
 
@@ -72,7 +86,14 @@ function LandingPage() {
                 <li>Acompanhamento de mudanças na legislação tributária</li>
               </ul>
               <p>Garantimos segurança, compliance e eficiência fiscal para sua empresa, minimizando riscos e aproveitando oportunidades legais de economia tributária.</p>
-              <Link to="/login" className="btn btn-primary">QUERO MINHA ESCRITURAÇÃO FISCAL</Link>
+              <a
+                  href="https://api.whatsapp.com/send?phone=55839988748533&text=Olá!%20Gostaria%20de%20mais%20informações."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-primary"
+              >
+               QUERO MINHA ESCRITURA FISCAL
+              </a>
             </article>
           </section>
           
@@ -94,7 +115,14 @@ function LandingPage() {
                   <li>Elaboração de relatórios com simulações e impactos financeiros</li>
                 </ul>
                 <p>Nosso foco é garantir segurança jurídica e eficiência fiscal, ajudando sua empresa a crescer de forma sustentável e com menor impacto tributário.</p>
-                <Link to="/login" className="btn btn-primary">SOLICITE SEU PLANEJAMENTO TRIBUTÁRIO</Link>
+                <a
+                  href="https://api.whatsapp.com/send?phone=55839988748533&text=Olá!%20Gostaria%20de%20mais%20informações."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-primary"
+              >
+                SOLICITE SEU PLANEJAMENTO TRIBUTÁRIO
+              </a>
               </article>
           </section>
 
@@ -116,7 +144,14 @@ function LandingPage() {
                 <li>Atendimento a fiscalizações e obrigações sindicais</li>
               </ul>
               <p>Oferecemos suporte técnico e estratégico para manter sua empresa regularizada e em dia com as normas trabalhistas, promovendo tranquilidade e eficiência na gestão de pessoas.</p>
-              <Link to="/login" className="btn btn-primary">FALE COM UM ESPECIALISTA</Link>
+              <a
+                  href="https://api.whatsapp.com/send?phone=55839988748533&text=Olá!%20Gostaria%20de%20mais%20informações."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-primary"
+              >
+                FALE COM UM ESPECIALISTA
+              </a>
             </article>
         </section>
 
@@ -131,6 +166,15 @@ function LandingPage() {
       <footer className="footer">
         © {new Date().getFullYear()} ContabFile. Todos os direitos reservados.
       </footer>
+      <a
+        href="https://api.whatsapp.com/send?phone=839988748533&text=Olá!%20Gostaria%20de%20mais%20informações."
+        className="whatsapp-float"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <i className="fab fa-whatsapp"></i>
+      </a>
+
     </div>
   );
 }
