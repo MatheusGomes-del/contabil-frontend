@@ -167,7 +167,7 @@ function LandingPage() {
         © {new Date().getFullYear()} ContabFile. Todos os direitos reservados.
       </footer>
       <a
-        href="https://api.whatsapp.com/send?phone=839988748533&text=Olá!%20Gostaria%20de%20mais%20informações."
+        href="https://api.whatsapp.com/send?phone=83988748533&text=Olá!%20Gostaria%20de%20mais%20informações."
         className="whatsapp-icon"
         target="_blank"
         rel="noopener noreferrer"
