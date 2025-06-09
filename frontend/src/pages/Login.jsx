@@ -21,7 +21,8 @@ function Login() {
 
     try {
       await login(email, password);
-      navigate(user.role === "admin" ? "/admin" : "/client");
+      console.log("log do user", user)
+      //navigate(user.role === "admin" ? "/admin" : "/client");
 
     } catch (err) {
       console.error(err);

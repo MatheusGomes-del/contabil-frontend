@@ -61,10 +61,11 @@ function AdminDashboard() {
         { headers: { Authorization: `Bearer ${token}` } }
       );
 
-      const client = response.data;
+      const clients = response.data.client;
+      const credentials = response.data.userCredentials;
 
       alert(
-        `Cliente cadastrado com sucesso!\n\nCredenciais de acesso:\nLogin: ${client.email}\nSenha: ${generatedPassword}`
+        `Cliente cadastrado com sucesso!\n\nCredenciais de acesso:\nLogin: ${credentials.email}\nSenha: ${credentials.password}`
       );
 
       setNewClient({ name: "", cnpj: "", email: "", phone: "" });
@@ -73,6 +74,37 @@ function AdminDashboard() {
       alert("Erro ao cadastrar cliente");
     }
   };
+
+  const handleUploadFile = async (clientId) => {
+    const fileInput = document.createElement('input');
+    fileInput.type = 'file';
+    fileInput.accept = '*/*';
+  
+    fileInput.onchange = async (event) => {
+      const file = event.target.files[0];
+      if (!file) return;
+  
+      const formData = new FormData();
+      formData.append('file', file);
+      formData.append('clientId', clientId);
+  
+      try {
+        await api.post('/documents/upload', formData, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "multipart/form-data"
+          },
+        });
+  
+        alert('Arquivo enviado com sucesso!');
+      } catch (error) {
+        alert('Erro ao enviar arquivo');
+      }
+    };
+  
+    fileInput.click();
+  };
+  
 
   const handleDeleteClient = async (clientId) => {
     if (!window.confirm("Tem certeza que deseja excluir este cliente?")) return;
@@ -87,6 +119,53 @@ function AdminDashboard() {
       alert("Erro ao excluir cliente");
     }
   };
+
+  const handleDeleteDocument = async (docId) => {
+    if (!window.confirm("Deseja realmente excluir este documento?")) return;
+  
+    try {
+      await api.delete(`/documents/${docId}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      alert("Documento excluído com sucesso!");
+      // Recarregar os documentos
+      const client = clients.find(c => c.name === selectedClientName);
+      if (client) fetchClientDocuments(client.id, client.name);
+    } catch (err) {
+      alert("Erro ao excluir documento.");
+    }
+  };
+  
+  const handleUpdateDocument = async (docId) => {
+    const fileInput = document.createElement('input');
+    fileInput.type = 'file';
+    fileInput.accept = '*/*';
+  
+    fileInput.onchange = async (event) => {
+      const file = event.target.files[0];
+      if (!file) return;
+  
+      const formData = new FormData();
+      formData.append('file', file);
+  
+      try {
+        await api.put(`/documents/update/${docId}`, formData, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "multipart/form-data"
+          }
+        });
+        alert("Documento atualizado com sucesso!");
+        const client = clients.find(c => c.name === selectedClientName);
+        if (client) fetchClientDocuments(client.id, client.name);
+      } catch {
+        alert("Erro ao atualizar documento.");
+      }
+    };
+  
+    fileInput.click();
+  };
+  
 
   useEffect(() => {
     const handleEsc = (event) => {
@@ -164,12 +243,18 @@ function AdminDashboard() {
       <td data-label="Nome">{client.name}</td>
       <td data-label="CNPJ">{client.cnpj}</td>
       <td data-label="Email">{client.email}</td>
-      <td data-label="Ações">
+      <td data-label="Ações" className="label-btns">
         <button
           onClick={() => fetchClientDocuments(client.id, client.name)}
           className="btn btn-secondary"
         >
           Ver Documentos
+        </button>
+        <button
+          onClick={() => handleUploadFile(client.id)}
+          className="btn btn-upload"
+        >
+          Upload
         </button>
         <button
           onClick={() => handleDeleteClient(client.id)}
@@ -202,18 +287,48 @@ function AdminDashboard() {
               Fechar
             </button>
             <ul className="documents-list">
-              {selectedClientDocuments.length === 0 ? (
-                <li>Sem documentos encontrados.</li>
-              ) : (
-                selectedClientDocuments.map((doc) => (
-                  <li key={doc.id}>
-                    <a href={doc.file_url} target="_blank" rel="noopener noreferrer">
-                      {doc.file_name}
-                    </a>
-                  </li>
-                ))
-              )}
-            </ul>
+  {selectedClientDocuments.length === 0 ? (
+    <li>Sem documentos encontrados.</li>
+  ) : (
+    selectedClientDocuments.map((doc) => {
+      const isPDF = doc.file_name.toLowerCase().endsWith(".pdf");
+      const uploadedAt = new Date(doc.uploaded_at).toLocaleString("pt-BR");
+
+      return (
+        <li key={doc.id} className="document-item">
+          <a
+            href={doc.file_url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="document-link"
+          >
+            {isPDF ? (
+              <span role="img" aria-label="PDF">📄</span>
+            ) : (
+              <span role="img" aria-label="Arquivo">📁</span>
+            )}
+            <span className="file-name">{doc.file_name}</span>
+          </a>
+          <div className="uploaded-at">Anexado em: {uploadedAt}</div>
+          <div className="document-actions">
+          <button
+            className="btn btn-danger"
+            onClick={() => handleDeleteDocument(doc.id)}
+          >
+            Excluir
+          </button>
+          <button
+            className="btn btn-upload"
+            onClick={() => handleUpdateDocument(doc.id)}
+          >
+            Atualizar
+          </button>
+        </div>
+        </li>
+      );
+    })
+  )}
+</ul>
           </div>
         </div>
       )}

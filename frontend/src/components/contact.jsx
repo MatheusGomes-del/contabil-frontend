@@ -1,4 +1,4 @@
-import { FaEnvelope, FaPhone, FaInstagram, FaFacebookF } from "react-icons/fa";
+import { FaEnvelope, FaPhone, FaInstagram } from "react-icons/fa";
 import "../style/contactSection.css";
 
 export function ContactSection() {
@@ -31,15 +31,6 @@ export function ContactSection() {
           className="social-icon instagram"
         >
           <FaInstagram />
-        </a>
-        <a
-          href="https://www.facebook.com/contabfile"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Facebook"
-          className="social-icon facebook"
-        >
-          <FaFacebookF />
         </a>
       </div>
     </section>

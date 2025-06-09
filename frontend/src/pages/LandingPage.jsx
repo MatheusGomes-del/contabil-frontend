@@ -2,17 +2,18 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "../style/landingPage.css";
 import { ContactSection } from "../components/contact";
-import serviceImagemOpenBusiness from '../assets/legal_homem_notebook.avif'
+import serviceImagemOpenBusiness from '../assets/abertura-empresa-contabilidade-02.jpg'
 import escrituracaoFiscalImg from '../assets/escrituracao-fiscal.jpeg'
 import planejamentoTributarioImg from '../assets/Planejamento-tributario-em-2022.webp'
 import departamentoPessoal from '../assets/departamento-pessoal.png'
+import logo from '../assets/logo_danilo.png'
 
 function LandingPage() {
   return (
     <div className="landing-container">
 
       <header className="header">
-        <div className="logo">ContabFile</div>
+        <img className="logo" src={ logo }></img>
         <nav className="nav">
           <a href="#home" className="nav-link">Home</a>
           <a href="#services" className="nav-link">Serviços</a>
@@ -23,10 +24,9 @@ function LandingPage() {
 
       <main>
         <section id="home" className="hero">
-          <h1 className="hero-title">Contabilidade Especializada em Abertura de Empresa</h1>
+          <h1 className="hero-title">QUEM É DANILO BARBOSA ?</h1>
           <p className="hero-text">
-            Já Ajudamos Mais de 1.500 Empreendedores a Começar Seus Negócios
-            Simplifique a Burocracia e Tenha Sua Empresa Regularizada com Rapidez e Segurança
+              Contador altamente qualificado, com 13 anos de experiência e sólida formação nas áreas de contabilidade financeira, tributária e gerencial. Ao longo da carreira, tem se destacado pela expertise técnica, visão estratégica e comprometimento com a excelência na gestão contábil e fiscal.
           </p>
           <a
                   href="https://api.whatsapp.com/send?phone=+5583988748533&text=Olá!%20Gostaria%20de%20mais%20informações."

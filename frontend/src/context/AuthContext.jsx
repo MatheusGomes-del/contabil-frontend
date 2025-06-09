@@ -58,6 +58,7 @@ export function AuthProvider({ children }) {
   
       const profile = await requestProfile(data.token);
       setUser(profile.user);
+      console.log("aqui log do profile", profile)
   
       if (profile.user.role === "admin") {
         navigate("/admin");
