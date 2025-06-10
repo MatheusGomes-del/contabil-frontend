@@ -1,11 +1,17 @@
 import { useEffect, useState } from "react";
 import api from "../services/api";
 import { useAuth } from "../context/AuthContext";
+import '../style/clientDashboard.css';
 
-function ClientDashboard() {
+const ClientDashboard = () => {
   const { token, user } = useAuth();
   const [documents, setDocuments] = useState([]);
   const [loading, setLoading] = useState(true);
+
+  // filtros
+  const [searchTitle, setSearchTitle] = useState('');
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
 
   useEffect(() => {
     const fetchDocuments = async () => {
@@ -28,25 +34,89 @@ function ClientDashboard() {
 
   if (loading) return <p>Carregando documentos...</p>;
 
+  const hasActiveFilters = searchTitle || startDate || endDate;
+
+  const filteredDocs = hasActiveFilters
+  ? documents.filter((doc) => {
+      const title = doc.title || 'sem título';
+      const matchesTitle = title.toLowerCase().includes(searchTitle.toLowerCase());
+
+      const uploaded = new Date(doc.uploaded_at);
+
+      const afterStart = startDate ? uploaded >= new Date(startDate) : true;
+
+      const end = endDate
+        ? new Date(new Date(endDate).setHours(23, 59, 59, 999))
+        : true;
+
+      const beforeEnd = endDate ? uploaded <= end : true;
+
+      return matchesTitle && afterStart && beforeEnd;
+    })
+  : documents;
+
+  // função para limpar filtros
+  const clearFilters = () => {
+    setSearchTitle('');
+    setStartDate('');
+    setEndDate('');
+  };
+
   return (
-    <div style={{ padding: 20 }}>
-      <h2>Bem-vindo, {user.name}</h2>
-      <h3>Seus documentos</h3>
-      {documents.length === 0 ? (
-        <p>Você não possui documentos cadastrados.</p>
-      ) : (
-        <ul>
-          {documents.map(doc => (
-            <li key={doc.id}>
+    <div className="dashboard">
+      <h1>Seus Documentos</h1>
+      <p>Visualize e baixe os arquivos enviados pela equipe administrativa</p>
+      
+      <div className="grid-documentos">
+
+        <div className="card-total-arquivos">
+          Total de arquivos 
+           <h3>{filteredDocs.length}</h3>
+        </div>
+      </div>
+
+      <div className="filters">
+        <input
+          type="text"
+          placeholder="Buscar por título..."
+          value={searchTitle}
+          onChange={(e) => setSearchTitle(e.target.value)}
+        />
+        <input
+          type="date"
+          value={startDate}
+          onChange={(e) => setStartDate(e.target.value)}
+        />
+        <input
+          type="date"
+          value={endDate}
+          onChange={(e) => setEndDate(e.target.value)}
+        />
+        {hasActiveFilters && (
+          <button className="clear-button" onClick={clearFilters}>
+            Limpar Filtros
+          </button>
+        )}
+      </div>
+
+      <div className="documents">
+        {filteredDocs.length === 0 ? (
+          <p>Nenhum documento encontrado com os filtros aplicados.</p>
+        ) : (
+          filteredDocs.map((doc) => (
+            <div className="doc-card" key={doc.id}>
+              <h2>{doc.title || 'Sem título'}</h2>
+              <p><strong>Arquivo:</strong> {doc.file_name}</p>
+              <p><strong>Enviado em:</strong> {new Date(doc.uploaded_at).toLocaleString('pt-BR')}</p>
               <a href={doc.file_url} target="_blank" rel="noopener noreferrer">
-                {doc.file_name}
+                📂 Visualizar Documento
               </a>
-            </li>
-          ))}
-        </ul>
-      )}
+            </div>
+          ))
+        )}
+      </div>
     </div>
   );
-}
+};
 
 export default ClientDashboard;

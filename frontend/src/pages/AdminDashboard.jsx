@@ -137,6 +137,7 @@ function AdminDashboard() {
   };
   
   const handleUpdateDocument = async (docId) => {
+    console.log(docId)
     const fileInput = document.createElement('input');
     fileInput.type = 'file';
     fileInput.accept = '*/*';
@@ -149,7 +150,7 @@ function AdminDashboard() {
       formData.append('file', file);
   
       try {
-        await api.put(`/documents/update/${docId}`, formData, {
+        await api.put(`/documents/${docId}`, formData, {
           headers: {
             Authorization: `Bearer ${token}`,
             "Content-Type": "multipart/form-data"
@@ -287,30 +288,35 @@ function AdminDashboard() {
               Fechar
             </button>
             <ul className="documents-list">
-  {selectedClientDocuments.length === 0 ? (
-    <li>Sem documentos encontrados.</li>
-  ) : (
-    selectedClientDocuments.map((doc) => {
-      const isPDF = doc.file_name.toLowerCase().endsWith(".pdf");
-      const uploadedAt = new Date(doc.uploaded_at).toLocaleString("pt-BR");
+            {selectedClientDocuments.length === 0 ? (
+  <li>Sem documentos encontrados.</li>
+) : (
+  selectedClientDocuments.map((doc) => {
+    const isPDF = doc.file_name.toLowerCase().endsWith(".pdf");
+    const uploadedAt = new Date(doc.uploaded_at).toLocaleString("pt-BR");
 
-      return (
-        <li key={doc.id} className="document-item">
-          <a
-            href={doc.file_url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="document-link"
-          >
-            {isPDF ? (
-              <span role="img" aria-label="PDF">📄</span>
-            ) : (
-              <span role="img" aria-label="Arquivo">📁</span>
-            )}
-            <span className="file-name">{doc.file_name}</span>
-          </a>
-          <div className="uploaded-at">Anexado em: {uploadedAt}</div>
-          <div className="document-actions">
+    // Garante que file_url é uma URL válida
+    const fileUrl = doc.file_url.startsWith('http')
+      ? doc.file_url
+      : `https://seu-bucket.s3.sa-east-1.amazonaws.com/${doc.file_url}`;
+
+    return (
+      <li key={doc.id} className="document-item">
+        <a
+          href={fileUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="document-link"
+        >
+          {isPDF ? (
+            <span role="img" aria-label="PDF">📄</span>
+          ) : (
+            <span role="img" aria-label="Arquivo">📁</span>
+          )}
+          <span className="file-name">{doc.file_name}</span>
+        </a>
+        <div className="uploaded-at">Anexado em: {uploadedAt}</div>
+        <div className="document-actions">
           <button
             className="btn btn-danger"
             onClick={() => handleDeleteDocument(doc.id)}
@@ -324,10 +330,11 @@ function AdminDashboard() {
             Atualizar
           </button>
         </div>
-        </li>
-      );
-    })
-  )}
+      </li>
+    );
+  })
+)}
+
 </ul>
           </div>
         </div>
