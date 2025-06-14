@@ -295,11 +295,9 @@ function AdminDashboard() {
     const isPDF = doc.file_name.toLowerCase().endsWith(".pdf");
     const uploadedAt = new Date(doc.uploaded_at).toLocaleString("pt-BR");
 
-    // Garante que file_url é uma URL válida
-    const fileUrl = doc.file_url.startsWith('http')
-      ? doc.file_url
-      : `https://seu-bucket.s3.sa-east-1.amazonaws.com/${doc.file_url}`;
 
+    const fileUrl = doc.secure_url;
+   
     return (
       <li key={doc.id} className="document-item">
         <a

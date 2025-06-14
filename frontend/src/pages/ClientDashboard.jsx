@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import LadingPage from '../pages/LandingPage';
 import api from "../services/api";
 import { useAuth } from "../context/AuthContext";
 import '../style/clientDashboard.css';
@@ -20,6 +22,7 @@ const ClientDashboard = () => {
           headers: { Authorization: `Bearer ${token}` }
         });
         setDocuments(response.data);
+        console.log("documentos aqui:", documents)
       } catch (err) {
         alert('Erro ao carregar documentos');
       } finally {
@@ -36,9 +39,9 @@ const ClientDashboard = () => {
 
   const hasActiveFilters = searchTitle || startDate || endDate;
 
-  const filteredDocs = hasActiveFilters
+const filteredDocs = hasActiveFilters
   ? documents.filter((doc) => {
-      const title = doc.title || 'sem título';
+      const title = doc.file_name || 'sem título';
       const matchesTitle = title.toLowerCase().includes(searchTitle.toLowerCase());
 
       const uploaded = new Date(doc.uploaded_at);
@@ -73,6 +76,7 @@ const ClientDashboard = () => {
           Total de arquivos 
            <h3>{filteredDocs.length}</h3>
         </div>
+        <Link to="/" className="goBack">Voltar</Link>
       </div>
 
       <div className="filters">
@@ -104,11 +108,14 @@ const ClientDashboard = () => {
           <p>Nenhum documento encontrado com os filtros aplicados.</p>
         ) : (
           filteredDocs.map((doc) => (
+      
             <div className="doc-card" key={doc.id}>
-              <h2>{doc.title || 'Sem título'}</h2>
-              <p><strong>Arquivo:</strong> {doc.file_name}</p>
+               <>
+             { console.log("doc filtrado aqui",filteredDocs) }
+            </>
+              <h2>{doc.title || doc.file_name }</h2>
               <p><strong>Enviado em:</strong> {new Date(doc.uploaded_at).toLocaleString('pt-BR')}</p>
-              <a href={doc.file_url} target="_blank" rel="noopener noreferrer">
+              <a href={doc.secure_url} target="_blank" rel="noopener noreferrer">
                 📂 Visualizar Documento
               </a>
             </div>

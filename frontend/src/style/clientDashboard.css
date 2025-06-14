@@ -141,6 +141,25 @@ h1 {
     background-color: #c0392b;
 }
 
+.goBack {
+  width: 100px;
+  align-self: last baseline;
+  justify-self: center;
+  padding: 8px 12px;
+  background-color: #e74c3c;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.grid-documentos {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start ;
+}
+
 @media (max-width: 768px) {
     .dashboard {
       max-width: 95%;

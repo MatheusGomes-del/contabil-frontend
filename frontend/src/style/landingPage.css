@@ -339,6 +339,10 @@ body {
   text-align: center;
 }
 
+.contact-details {
+  flex-wrap: wrap;
+}
+
 .contact h2 {
   font-size: 2rem;
   font-weight: 600;
